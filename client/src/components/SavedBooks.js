@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
-import Card from "../components/Card";
-import SavedBookDetail from "../components/SavedBookDetail";
+import Container from "./Container";
+import Row from "./Row";
+import Col from "./Col";
+import Card from "./Card";
+import SavedBookDetail from "./SavedBookDetail";
 import API from "../utils/API";
 
 class SavedBooks extends Component {
@@ -11,7 +11,6 @@ class SavedBooks extends Component {
         books: []
     };
 
-    // grab the books from /api/books
     componentDidMount() {
         API.getBooks()
             .then(res => this.setState(
@@ -24,7 +23,6 @@ class SavedBooks extends Component {
             .catch(err => console.log(err));
     }
 
-    // loads all books
     loadBooks = () => {
         API.getBooks()
             .then(res =>
@@ -33,7 +31,6 @@ class SavedBooks extends Component {
             .catch(err => console.log(err));
     };
 
-    // deletes a book
     handleDeleteBook = id => {
         API.deleteBook(id)
             .then(res => this.loadBooks())
